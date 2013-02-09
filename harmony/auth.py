@@ -37,7 +37,7 @@ def login(username, password):
         LOGGER.error('Data: \n%s\n', r.text)
         return
 
-    result = r.json.get('GetUserAuthTokenResult', None)
+    result = r.json().get('GetUserAuthTokenResult', None)
     if not result:
         LOGGER.error('Malformed JSON (GetUserAuthTokenResult): %s', r.json)
         return
