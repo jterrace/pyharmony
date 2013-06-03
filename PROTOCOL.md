@@ -103,3 +103,15 @@ release event would have to be sent to stop the volume from continuing to go
 down. It looks like the `deviceId` parameter is some numeric identifier of the
 device you're sending the command for. I assume this can be obtained from the
 sync protocol but have not yet investigated.
+
+### Retrieving devices and command list
+
+You can send an IQ query with an `<oa>` tag to ask for `?config`:
+
+    <iq type="get" id="2320426445" from="e01b88af-b4cd-4d1c-8e76-85562ea3fad5">
+      <oa xmlns="connect.logitech.com" mime="vnd.logitech.harmony/vnd.logitech.harmony.engine?config">
+      </oa>
+    </iq>
+
+The response contains a CDATA body that has a JSON string containing the list
+of devices and their available commands.
